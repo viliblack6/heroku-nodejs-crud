@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<% include ../partials/head %>
+</head>
+<body class="container center-block">
+	<header></header>
+	<section class="usuarios">
+			<div class="row">
+				<div class="col-md-offset-1 col-md-10">
+					<h1>Usuarios</h1>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tr class="active">
+								<td>#</td>
+								<td>Usuario</td>
+								<td>Password</td>
+								<td></td>
+							</tr>
+							<%
+								data.forEach(function(row){
+							%>
+								<tr>
+									<td><%= row.id_usuario %></td>
+									<td><%= row.usuario %></td>
+									<td><%= row.password %></td>
+									<td>
+										<a class="btn btn-danger" href="delete/<%= row.id_usuario%>" role="button">Eliminar</a>
+									</td>
+								</tr>
+							<%	
+								});
+							%>
+						</table>
+					<div>
+				</div>
+			</div>
+	</section>
+	<section class="registrar col-md-offset-3 col-md-6">
+		<form action="/registrar" method="post">
+			<h1>Registrar usuarios</h1>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+				<input type="text" name="usuario_reg" id="usuario_reg" class="form-control" placeholder="Usuario" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
+				<input type="password" name="pass_reg" id="pass_reg" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1">
+			</div>
+			<button type="submit" class="btn btn-success">Registrar</button>
+		</form>
+	</section>
+	<section class="registrar col-md-offset-3 col-md-6">
+		<form action="/modificar" method="post">
+			<h1>Modificar usuarios</h1>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+				<input type="text" name="id_usuario_mod" id="id_usuario_mod" class="form-control" placeholder="Id" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+				<input type="text" name="usuario_mod" id="usuario_mod" class="form-control" placeholder="Usuario" aria-describedby="basic-addon1">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
+				<input type="password" name="pass_mod" id="pass_mod" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1">
+			</div>
+			<button type="submit" class="btn btn-success">Modificar</button>
+		</form>
+	</section>
+	<footer></footer>
+</body>
+</html>
